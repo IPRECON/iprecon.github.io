@@ -19,6 +19,31 @@
 </head>
 
 <body style="font-family: Montserrat, sans-serif;">
+    <div id="loader"></div>
+    <script>
+        var loader;
+
+        function loadNow(opacity) {
+            if (opacity <= 0) {
+                displayContent();
+            } else {
+                loader.style.opacity = opacity;
+                window.setTimeout(function() {
+                    loadNow(opacity - 0.05);
+                }, 50);
+            }
+        }
+
+        function displayContent() {
+            loader.style.display = 'none';
+            document.getElementById('content').style.display = 'block';
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            loader = document.getElementById('loader');
+            loadNow(1);
+        });
+    </script>
     <div>
         <nav class="navbar navbar-light navbar-expand-md navigation-clean" style="padding: 16px">
             <div class="container"><a class="navbar-brand" href="#" style="font-family: Montserrat, sans-serif;"><strong>IPRECON</strong> 2020</a><button class="navbar-toggler" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
